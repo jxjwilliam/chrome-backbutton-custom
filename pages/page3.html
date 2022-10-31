@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Page 3</title>
+  <script>
+    history.pushState({pageId: 'page3'}, null, null)
+    window.onpopstate = function () {
+      history.pushState({ page: 3 }, null, location.href);
+      alert('do not click page 3 back button');
+    };
+    history.pushState({pageId: 'page3'}, null, location.href)
+    window.onload = function() {
+      const body = document.body;
+      body.click()
+    }
+    function myclick() {
+      console.log('click me!')
+      history.pushState({pageId: 'myframe'}, null, location.href)
+    }
+  </script>
+</head>
+<body onclick="myclick()">
+  <h1>Page 3</h1>
+  <a href="../index.html" id="page3">Go to Home Page</a>
+  <iframe id="ifame3" src="./page4.html"></iframe>
+</body>
+</html>
